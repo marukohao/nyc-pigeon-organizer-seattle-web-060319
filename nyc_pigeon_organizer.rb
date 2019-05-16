@@ -3,15 +3,23 @@ def nyc_pigeon_organizer(data)
   hash = {}
   data.each do |feature, detail|
     detail.each do |item, names|
-      names.each do |name|
+      names.each do |name| 
         hash[name] = {}
-        if !hash[name].key?(feature) 
-          hash[name][feature] = [item]
-        else 
+      end
+    end
+  end
+  
+  data.each do |feature, detail|
+    detail.each do |item, names|
+      names.each do |name| 
+        if hash[name].key?(feature) 
           hash[name][feature] << item
+        else 
+          hash[name][feature] = [item]
         end
       end
     end
   end
-  hash 
+  hash
 end
+
